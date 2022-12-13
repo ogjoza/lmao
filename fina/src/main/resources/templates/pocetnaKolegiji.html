@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>FINA</title>
+</head>
+<body>
+<div align="center">
+    <h1>POPIS KOLEGIJA</h1>
+    <a href="/kolegij/novi">Kreiraj novi kolegij</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID kolegija</th>
+                <th>Naziv</th>
+                <th>ECTS</th>
+                <th>Studij</th>
+                <th>Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="kolegij : ${listKolegija}">
+                <td th:text="${kolegij.id_kolegija}">Product ID</td>
+                <td th:text="${kolegij.naziv}">Naziv</td>
+                <td th:text="${kolegij.ECTS}">ects</td>
+                <td th:text="${kolegij.studij}">studij</td>
+                <td>
+                    <a th:href="@{'/kolegij/uredi/' + ${kolegij.id_kolegija}}">Uredi</a>
+                    &nbsp;&nbsp;
+                    <a th:href="@{'/kolegij/brisi/' + ${kolegij.id_kolegija}}">Briši</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>FINA</title>
+</head>
+<body>
+<div align="center">
+    <h1>POPIS NASTAVNIKA</h1>
+    <a href="/nastavnik/novi">Upis novog nastavnika</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Rb.</th>
+                <th>Prezime</th>
+                <th>Ime</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="nastavnik : ${listNastavnika}">
+                <td th:text="${nastavnik.id_nastavnik}">Rb</td>
+                <td th:text="${nastavnik.prezime}">Prezime</td>
+                <td th:text="${nastavnik.ime}">Ime</td>
+                <td th:text="${nastavnik.email}">Email</td>
+                <td th:text="${nastavnik.tel}">Tel</td>
+                <td>
+                    <a th:href="@{'/nastavnik/uredi/' + ${nastavnik.id_nastavnik}}">Uredi</a>
+                    &nbsp;&nbsp;
+                    <a th:href="@{'/nastavnik/brisi/' + ${nastavnik.id_nastavnik}}">Briši</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>
